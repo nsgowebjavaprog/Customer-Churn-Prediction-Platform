@@ -20,5 +20,43 @@ python -m venv churn_env
 
 ## -------------------------------------------------
 
+![alt text](image-2.png)
+## -------------------------------------------------
+Run code following in backend folder:
+
+(churn_env) (base) PS D:\Customer-Churn-Prediction-Platform\backend> `python -m uvicorn app.main:app --reload`
+
+## -------------------------------------------------
+
+(churn_env) (base) PS D:\Customer-Churn-Prediction-Platform\backend> `python -m uvicorn app.main:app --reload`
+
+## -------------------------------------------------
+`
+npm install
+`
+`
+npm start
+`
+
+## Front-End Looking Like:
+
+![alt text](image-3.png)
+
+## -------------------------------------------------
+
+
+## Alway run frontend and run backend above shown then works good
+
+## -------------------------------------------------
+`
+pip install --upgrade scikit-learn==1.9.0
+`
+## -------------------------------------------------
+
+![alt text](image-4.png)
+
+## -------------------------------------------------
+
+![alt text](image-5.png)
 
 ## -------------------------------------------------
