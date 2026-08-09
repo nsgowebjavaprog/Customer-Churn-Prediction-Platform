@@ -60,3 +60,9 @@ pip install --upgrade scikit-learn==1.9.0
 ![alt text](image-5.png)
 
 ## -------------------------------------------------
+
+![alt text](image-6.png)
+
+## -------------------------------------------------
+
+![alt text](image-7.png)
