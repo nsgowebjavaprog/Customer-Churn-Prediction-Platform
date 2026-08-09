@@ -4,3 +4,4 @@ matplotlib
 fastapi 
 scikit-learn  
 uvicorn
+mlflow
