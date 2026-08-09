@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", -apple-system, sans-serif;
+  background: #0f1115;
+  color: #e8eaee;
+}
+
+a {
+  color: inherit;
+}

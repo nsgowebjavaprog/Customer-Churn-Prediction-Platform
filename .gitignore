@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# ML artifacts (regenerate via train.py; keep repo light)
+ml/mlruns/
+ml/models/*.joblib
+backend/app/churn_history.db
+
+# Node / React
+frontend/node_modules/
+frontend/build/
+
+# Env
+.env
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

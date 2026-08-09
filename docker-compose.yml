@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .                     # project root (needed for ml/ files too)
+      dockerfile: backend/Dockerfile
+    container_name: churn-backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Inside the container the layout is /app/app + /app/ml/*
+      - MODEL_PATH=/app/ml/models/churn_model.joblib
+      - METADATA_PATH=/app/ml/models/model_metadata.json
+      - DATABASE_URL=sqlite:////app/app/churn_history.db
+      - CORS_ORIGINS=["http://localhost:3000"]
+    volumes:
+      - backend_db:/app/app          # persist the sqlite history db
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: churn-frontend
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_BASE_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  backend_db:

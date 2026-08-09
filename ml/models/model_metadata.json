@@ -1,0 +1,56 @@
+{
+  "best_model": "logistic_regression",
+  "all_results": {
+    "logistic_regression": {
+      "accuracy": 0.6583,
+      "precision": 0.4963,
+      "recall": 0.6552,
+      "f1_score": 0.5648,
+      "roc_auc": 0.7189,
+      "confusion_matrix": [
+        [
+          262,
+          135
+        ],
+        [
+          70,
+          133
+        ]
+      ]
+    },
+    "random_forest": {
+      "accuracy": 0.6617,
+      "precision": 0.5,
+      "recall": 0.5567,
+      "f1_score": 0.5268,
+      "roc_auc": 0.7021,
+      "confusion_matrix": [
+        [
+          284,
+          113
+        ],
+        [
+          90,
+          113
+        ]
+      ]
+    }
+  },
+  "feature_columns": [
+    "gender",
+    "senior_citizen",
+    "partner",
+    "dependents",
+    "tenure_months",
+    "contract",
+    "internet_service",
+    "online_security",
+    "tech_support",
+    "streaming_tv",
+    "paperless_billing",
+    "payment_method",
+    "monthly_charges",
+    "total_charges",
+    "num_support_calls"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "n_rows": 3000,
+  "n_columns": 17,
+  "churn_rate": 0.3377,
+  "missing_values": {
+    "customer_id": 0,
+    "gender": 0,
+    "senior_citizen": 0,
+    "partner": 0,
+    "dependents": 0,
+    "tenure_months": 0,
+    "contract": 0,
+    "internet_service": 0,
+    "online_security": 0,
+    "tech_support": 0,
+    "streaming_tv": 0,
+    "paperless_billing": 0,
+    "payment_method": 0,
+    "monthly_charges": 0,
+    "total_charges": 60,
+    "num_support_calls": 0,
+    "churn": 0
+  },
+  "numeric_describe": {
+    "tenure_months": {
+      "count": 3000.0,
+      "mean": 35.342333333333336,
+      "std": 21.228691913124,
+      "min": 0.0,
+      "25%": 17.0,
+      "50%": 35.0,
+      "75%": 53.0,
+      "max": 72.0
+    },
+    "monthly_charges": {
+      "count": 3000.0,
+      "mean": 65.69581,
+      "std": 20.05209072037093,
+      "min": 18.0,
+      "25%": 51.795,
+      "50%": 65.72,
+      "75%": 79.275,
+      "max": 120.0
+    },
+    "total_charges": {
+      "count": 2940.0,
+      "mean": 2327.9680374149657,
+      "std": 1643.3780027066985,
+      "min": 0.0,
+      "25%": 957.18,
+      "50%": 2054.525,
+      "75%": 3415.9275000000002,
+      "max": 8419.62
+    },
+    "num_support_calls": {
+      "count": 3000.0,
+      "mean": 1.4833333333333334,
+      "std": 1.2245633537543121,
+      "min": 0.0,
+      "25%": 1.0,
+      "50%": 1.0,
+      "75%": 2.0,
+      "max": 7.0
+    }
+  },
+  "churn_by_contract": {
+    "Month-to-month": 0.431,
+    "One year": 0.25,
+    "Two year": 0.181
+  }
+}
