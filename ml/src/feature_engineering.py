@@ -1,18 +1,3 @@
-"""
-feature_engineering.py
------------------------
-Defines the sklearn preprocessing pipeline (ColumnTransformer) used by
-BOTH training and inference, so training/serving skew is impossible --
-the exact same fitted transformer object is pickled and reused by the
-FastAPI backend.
-
-Techniques demonstrated (good interview talking points):
-  - Numeric pipeline: median imputation + StandardScaler
-  - Categorical pipeline: most-frequent imputation + OneHotEncoder
-  - ColumnTransformer to combine heterogeneous feature types
-  - Derived / engineered features (feature engineering, not just raw cols)
-"""
-
 from __future__ import annotations
 import pandas as pd
 from sklearn.compose import ColumnTransformer
