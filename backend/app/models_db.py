@@ -1,10 +1,3 @@
-"""
-models_db.py
-------------
-SQLAlchemy ORM model(s). Named "models_db" (not "models.py") to avoid
-any confusion with the ML model files in ml/models/.
-"""
-
 from datetime import datetime, timezone
 from sqlalchemy import Column, Integer, String, Float, DateTime, JSON, Text
 from app.database import Base

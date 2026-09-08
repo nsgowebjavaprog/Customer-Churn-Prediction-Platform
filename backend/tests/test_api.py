@@ -1,12 +1,3 @@
-"""
-test_api.py
------------
-Basic smoke tests using FastAPI's TestClient (built on httpx).
-Run:
-    cd backend
-    pytest -v
-"""
-
 import sys
 from pathlib import Path
 

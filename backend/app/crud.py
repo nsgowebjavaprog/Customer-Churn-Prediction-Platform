@@ -1,12 +1,3 @@
-"""
-crud.py
--------
-The "C-R-U-D" layer: every DB operation lives here, kept separate from
-the route handlers (routers/*.py). This separation is a classic
-FastAPI best practice interviewers look for -- routers stay thin
-(HTTP concerns only), crud.py owns persistence logic.
-"""
-
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 

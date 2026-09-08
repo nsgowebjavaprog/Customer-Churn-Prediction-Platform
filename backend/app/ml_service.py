@@ -1,17 +1,3 @@
-"""
-ML service for Customer Churn Prediction.
-
-Wraps the trained sklearn Pipeline (preprocessor + classifier)
-for inference.
-
-The model is loaded ONCE at application startup and reused
-for every request.
-
-Feature engineering parity:
-The exact same engineer_features() function used during
-training is imported here to prevent train/serve skew.
-"""
-
 import json
 import sys
 from pathlib import Path
@@ -21,37 +7,6 @@ import pandas as pd
 
 from app.config import settings
 
-
-# ============================================================
-# PATHS
-# ============================================================
-
-# Example:
-#
-# Customer-Churn-Prediction-Platform/
-#
-# ├── ml/
-# │   ├── models/
-# │   │   ├── churn_model.joblib
-# │   │   └── model_metadata.json
-# │   │
-# │   └── src/
-# │       └── feature_engineering.py
-#
-# └── backend/
-#     └── app/
-#         └── ml_service.py
-#
-#
-# settings.churn_model_path:
-#     ml/models/churn_model.joblib
-#
-# parent:
-#     ml/models
-#
-# parent.parent:
-#     ml
-
 MODEL_PATH = Path(
     settings.churn_model_path
 ).resolve()
@@ -59,11 +14,6 @@ MODEL_PATH = Path(
 ML_ROOT = MODEL_PATH.parent.parent
 
 ML_SRC_PATH = ML_ROOT / "src"
-
-
-# ============================================================
-# IMPORT FEATURE ENGINEERING
-# ============================================================
 
 if not ML_SRC_PATH.exists():
     raise FileNotFoundError(
@@ -79,12 +29,6 @@ from feature_engineering import (  # noqa: E402
     ALL_INPUT_COLUMNS,
 )
 
-
-# ============================================================
-# MODEL SERVICE
-# ============================================================
-
-
 class ChurnModelService:
     """
     Handles loading the trained churn model and
@@ -95,10 +39,7 @@ class ChurnModelService:
         self.pipeline = None
         self.metadata = {}
 
-    # ========================================================
-    # LOAD MODEL
-    # ========================================================
-
+   
     def load(self):
         """
         Load the trained sklearn Pipeline and metadata.
@@ -114,35 +55,21 @@ class ChurnModelService:
             settings.metadata_file_path
         ).resolve()
 
-        # ----------------------------------------------------
-        # Check model file
-        # ----------------------------------------------------
-
+        
         if not model_path.exists():
             raise FileNotFoundError(
                 f"Churn model not found at:\n{model_path}"
             )
-
-        # ----------------------------------------------------
-        # Check metadata file
-        # ----------------------------------------------------
 
         if not metadata_path.exists():
             raise FileNotFoundError(
                 f"Model metadata not found at:\n{metadata_path}"
             )
 
-        # ----------------------------------------------------
-        # Load sklearn Pipeline
-        # ----------------------------------------------------
-
         self.pipeline = joblib.load(
             model_path
         )
 
-        # ----------------------------------------------------
-        # Load metadata
-        # ----------------------------------------------------
 
         with open(
             metadata_path,
@@ -156,11 +83,6 @@ class ChurnModelService:
         )
 
         return self
-
-    # ========================================================
-    # MODEL NAME
-    # ========================================================
-
     @property
     def model_name(self) -> str:
         """
@@ -172,9 +94,6 @@ class ChurnModelService:
             "unknown",
         )
 
-    # ========================================================
-    # RISK BUCKET
-    # ========================================================
 
     @staticmethod
     def _risk_bucket(prob: float) -> str:
@@ -193,10 +112,6 @@ class ChurnModelService:
             return "Medium"
 
         return "High"
-
-    # ========================================================
-    # SINGLE CUSTOMER PREDICTION
-    # ========================================================
 
     def predict_one(
         self,
@@ -219,9 +134,6 @@ class ChurnModelService:
 
         return self._predict_df(df)[0]
 
-    # ========================================================
-    # BATCH PREDICTION
-    # ========================================================
 
     def predict_batch(
         self,
@@ -240,9 +152,7 @@ class ChurnModelService:
 
         return self._predict_df(df)
 
-    # ========================================================
-    # INTERNAL PREDICTION
-    # ========================================================
+
 
     def _predict_df(
         self,
@@ -289,33 +199,18 @@ class ChurnModelService:
                 f"feature engineering: {missing_columns}"
             )
 
-        # ----------------------------------------------------
-        # Select features in training order
-        # ----------------------------------------------------
-
         X = df_fe[
             required_columns
         ]
-
-        # ----------------------------------------------------
-        # Predict probability
-        # ----------------------------------------------------
 
         probs = self.pipeline.predict_proba(
             X
         )[:, 1]
 
-        # ----------------------------------------------------
-        # Predict class
-        # ----------------------------------------------------
-
         preds = self.pipeline.predict(
             X
         )
 
-        # ----------------------------------------------------
-        # Build results
-        # ----------------------------------------------------
 
         results = []
 
@@ -344,12 +239,5 @@ class ChurnModelService:
             )
 
         return results
-
-
-# ============================================================
-# SINGLETON INSTANCE
-# ============================================================
-
-# Imported by main.py and routers.
 
 churn_service = ChurnModelService()

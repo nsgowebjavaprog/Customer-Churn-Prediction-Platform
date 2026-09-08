@@ -1,11 +1,3 @@
-"""
-database.py
------------
-SQLAlchemy engine/session setup (SQLite for simplicity — swap
-database_url in config.py for Postgres in production, nothing else
-in the app needs to change, which is the whole point of an ORM layer).
-"""
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 

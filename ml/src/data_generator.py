@@ -1,17 +1,3 @@
-"""
-data_generator.py
-------------------
-Generates a realistic, synthetic Telecom/SaaS Customer Churn dataset.
-Why synthetic? So the whole project runs anywhere with zero external
-downloads, but the schema/columns mirror the classic real-world
-"Telco Customer Churn" dataset that interviewers recognize instantly.
-
-Run:
-    python ml/src/data_generator.py
-Output:
-    ml/data/customer_churn.csv
-"""
-
 import numpy as np
 import pandas as pd
 from pathlib import Path

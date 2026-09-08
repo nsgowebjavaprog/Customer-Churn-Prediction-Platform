@@ -1,16 +1,3 @@
-"""
-routers/upload.py
-------------------
-Batch CSV prediction. Flow:
-  1. User uploads a .csv file (multipart/form-data)
-  2. We validate: correct extension, readable, required columns present,
-     row count under settings.max_upload_rows, no completely-empty file
-  3. If validation FAILS -> HTTP 400 with a clear, itemized error list
-  4. If validation PASSES -> run predictions for every row, append
-     `churn_prediction`, `churn_probability`, `risk_level` columns,
-     and stream the result back as a downloadable CSV file.
-"""
-
 import io
 import pandas as pd
 from fastapi import APIRouter, UploadFile, File, HTTPException

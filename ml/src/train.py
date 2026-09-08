@@ -1,21 +1,3 @@
-"""
-train.py
---------
-End-to-end training script:
-  1. Load raw CSV
-  2. Quick EDA summary (printed + saved to ml/models/eda_summary.json)
-  3. Feature engineering + preprocessing pipeline
-  4. Train TWO algorithms: Logistic Regression (baseline, interpretable)
-     and Random Forest (non-linear, usually stronger)
-  5. Evaluate both on a held-out test set with multiple metrics
-  6. Log params/metrics/artifacts to MLflow for EVERY run
-  7. Select the better model (by ROC-AUC) and persist it + the
-     preprocessor + metadata to ml/models/ for the FastAPI backend to load
-
-Run:
-    python ml/src/train.py
-"""
-
 import json
 import sys
 from pathlib import Path
