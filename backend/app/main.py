@@ -1,15 +1,3 @@
-"""
-main.py
--------
-FastAPI application entrypoint.
-
-Run locally (from backend/ directory):
-    uvicorn app.main:app --reload --port 8000
-
-Swagger UI:  http://localhost:8000/docs
-ReDoc:       http://localhost:8000/redoc
-"""
-
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
