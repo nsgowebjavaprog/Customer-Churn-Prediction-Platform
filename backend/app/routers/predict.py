@@ -1,15 +1,3 @@
-"""
-routers/predict.py
--------------------
-Single-customer prediction endpoint.
-
-Demonstrates:
-  - Request body validated by Pydantic (schemas.CustomerFeatures)
-  - Query parameter (`save_to_history`) with a default value
-  - Path parameter usage on the companion GET-by-id endpoint
-  - Dependency injection of the DB session (get_db)
-"""
-
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
