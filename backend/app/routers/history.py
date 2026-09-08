@@ -1,14 +1,3 @@
-"""
-routers/history.py
--------------------
-Full CRUD over the prediction_history table:
-  GET    /history           -> list (paginated, filterable by risk_level)
-  GET    /history/{id}      -> read one (path param)
-  PATCH  /history/{id}      -> partial update (e.g. add analyst notes)
-  DELETE /history/{id}      -> delete one
-  GET    /history/stats/summary -> aggregate churn-rate stats
-"""
-
 from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from sqlalchemy.orm import Session
 
