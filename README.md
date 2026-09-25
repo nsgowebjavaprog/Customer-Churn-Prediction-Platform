@@ -5,7 +5,6 @@ I Built a complete, production-style ML project: Customer Churn Prediction Platf
 `
 python -m venv churn_env
 `
-
 `
 .\churn_env\Scripts\Activate.ps1
 `
